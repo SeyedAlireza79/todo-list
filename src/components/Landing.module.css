@@ -1,0 +1,85 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 80px;
+    /* width: 100vw; */
+}
+
+.container h1 {
+    font-size: 3.3rem;
+    color: #eee;
+    line-height: 20px;
+}
+
+.container h1::first-letter {
+    font-size: 4.5rem;
+}
+
+.searchBox input , .addTaskContainer input{
+    /* width: 500px; */
+    width: calc(100vw / 2);
+    height: 40px;
+    background-color: rgba(39, 34, 70, 0.761);
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    padding: 2px 15px;
+    color: #d3d3d3;
+    font-size: 1.2rem ;
+}
+
+.addTaskContainer {
+    display: flex;
+}
+
+.addTaskContainer input {
+    /* width: 250px; */
+    width: calc(100vw / 2 - 50px);
+    border-radius: 5px 0 0 5px;
+}
+
+.addTaskContainer button {
+    height: 42px;
+    padding: 2px 0;
+    width: 50px;
+    font-size: 1.2rem;
+    background-color: rgba(47, 177, 184, 0.101);
+    border: none;
+    border-radius: 0 5px 5px 0;
+    color: #eee;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+}
+
+.addTaskContainer button:hover {
+    background-color: rgba(33, 120, 124, 0.101);
+}
+
+.taskContainer {
+    width: calc(100vw / 2 + 30px);
+    /* padding: 15px; */
+    /* background-color: #eeeeee18; */
+    background-color: #00000018;
+    border-radius: 5px;
+    min-height: 300px;
+    max-height: 300px;
+    overflow-y: scroll;
+    
+}
+
+.taskContainer::-webkit-scrollbar {
+    width: 10px;
+}
+
+.taskContainer::-webkit-scrollbar-thumb {
+    background-color: rgba(80, 76, 107, 0.989);
+    border-radius: 10px;
+}
+
+.taskContainer::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: rgba(220, 220, 220, 0.734);
+}
+

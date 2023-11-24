@@ -1,35 +1,57 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+
+// Styles
+import styles from './Landing.module.css';
+
+// Icon
+import { SlNote } from 'react-icons/sl';
 
 // Context
 import { TaskContext } from '../context/TaskContextProvider';
+import Task from './Task';
 
 function Landing() {
-	const [task, setTask] = useState([]);
-	const { state, dispatch } = useContext(TaskContext);
+	const [task, setTask] = useState('');
 	const [search, setSearch] = useState();
+
+	const { state, dispatch } = useContext(TaskContext);
 
 	const changeHandler = (e) => {
 		setTask(() => e.target.value);
-		// console.log(state);
 	};
 
 	const searchHandler = (e) => {
 		setSearch(() => e.target.value);
 	};
 
+	useEffect(() => {
+		setTask('');
+	}, [state]);
+
+	const keyDownHandler = (e) => {
+		if (e.key === 'Enter') dispatch({ type: 'ADD_TASK', payload: task.trim() });
+	};
+
 	return (
-		<div>
-			<div>
-				<input type="text" value={task} onChange={changeHandler} />
-				<button onClick={() => dispatch({ type: 'ADD_TASK', payload: task })}>Add</button>
-				<button onClick={() => dispatch({ type: 'REMOVE_TASK', payload: task })}>Remove</button>
+		<div className={styles.container}>
+			<h1>Todo list</h1>
+			<div className={styles.searchBox}>
+				<input type="text" placeholder="Search todos..." value={search} onChange={searchHandler} />
 			</div>
-			<div>
-				<input type="text" placeholder="Search task..." value={search} onChange={searchHandler} />
+			<div className={styles.addTaskContainer}>
+				<input onKeyDown={keyDownHandler} placeholder="What Todo?" type="text" value={task} onChange={changeHandler} />
+				<button onClick={() => dispatch({ type: 'ADD_TASK', payload: task.trim() })}>
+					<SlNote />
+				</button>
 			</div>
-			<div>
-                {state.tasks.map(task => <p>{task}</p>)}
-            </div>
+			<div className={styles.taskContainer}>
+				{state.tasks
+					.slice()
+					.reverse()
+					.map((object) => (
+						<Task key={state.tasks.indexOf(object)} data={object} taskState={task} />
+					))}
+			</div>
 		</div>
 	);
 }
