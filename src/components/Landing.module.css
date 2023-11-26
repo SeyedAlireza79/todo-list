@@ -14,20 +14,19 @@
 }
 
 .container h1::first-letter {
-    font-size: 4.5rem;
+    font-size: 4.3rem;
 }
 
 .searchBox input , .addTaskContainer input{
-    /* width: 500px; */
     width: calc(100vw / 2);
-    height: 40px;
+    height: 50px;
     background-color: rgba(39, 34, 70, 0.761);
     border: none;
     border-radius: 5px;
     outline: none;
     padding: 2px 15px;
-    color: #d3d3d3;
-    font-size: 1.2rem ;
+    color: #d3d3d3b8;
+    font-size: 1.4rem ;
 }
 
 .addTaskContainer {
@@ -35,15 +34,14 @@
 }
 
 .addTaskContainer input {
-    /* width: 250px; */
-    width: calc(100vw / 2 - 50px);
+    width: calc(100vw / 2 - 70px);
     border-radius: 5px 0 0 5px;
 }
 
 .addTaskContainer button {
-    height: 42px;
+    height:52px;
     padding: 2px 0;
-    width: 50px;
+    width: 65px;
     font-size: 1.2rem;
     background-color: rgba(47, 177, 184, 0.101);
     border: none;
@@ -57,16 +55,18 @@
     background-color: rgba(33, 120, 124, 0.101);
 }
 
+.addTaskIcon {
+    width: 30px;
+    height: auto;
+}
+
 .taskContainer {
     width: calc(100vw / 2 + 30px);
-    /* padding: 15px; */
-    /* background-color: #eeeeee18; */
     background-color: #00000018;
     border-radius: 5px;
-    min-height: 300px;
-    max-height: 300px;
+    min-height: 350px;
+    max-height: 350px;
     overflow-y: scroll;
-    
 }
 
 .taskContainer::-webkit-scrollbar {

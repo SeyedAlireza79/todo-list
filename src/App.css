@@ -10,7 +10,7 @@
 .App {
   height: 100vh;
 	background: #352f5b;
-	background: linear-gradient(90deg, #352f5b 0%, #3b365f 100%);
+	background: linear-gradient(90deg, #3b3466 0%, #3e386b 100%);
   display: flex;
   justify-content: center;
   font-family: 'josefin-reg';

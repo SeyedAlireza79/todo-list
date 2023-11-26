@@ -13,13 +13,14 @@
 }
 
 .container h3 {
-    width: 400px;
     width: 80%;
     color: #eee;
+    font-size: 1.3rem;
+    margin-left: 5px;
 }
 
 .container h3::first-letter {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
 }
 
 .timeContainer {
@@ -36,12 +37,18 @@
     width: 25px;
     background-color: transparent;
     border: none;
-    color: #e92929;
-    scale: 1.9;
+    color: #da1f1f;
+    scale: 2.2;
     cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.rightSide button:hover {
+    color: #b71414;
 }
 
 .timeContainer {
     margin-right: 15px;
-    color: rgb(101, 152, 214);
+    color: rgb(122, 172, 233);
+    font-size: 1.2rem;
 }
