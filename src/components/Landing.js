@@ -13,9 +13,15 @@ import Task from './Task';
 function Landing() {
 	const [task, setTask] = useState('');
 	const [search, setSearch] = useState('');
+	const [savedTasks, setSavedTasks] = useState([]);
 
 	const { state, dispatch } = useContext(TaskContext);
-	
+
+	useEffect(() => {
+		const tasksFromLocalStorage = JSON.parse(localStorage.getItem('tasks')) || [];
+		setSavedTasks(tasksFromLocalStorage);
+	}, []);
+
 	const changeHandler = (e) => {
 		setTask(() => e.target.value);
 	};
@@ -24,13 +30,15 @@ function Landing() {
 		setSearch(() => e.target.value);
 	};
 
-	useEffect(() => {
-		setTask('');
-		console.log(state);
-		console.log(searchedTask);
-	}, [state]);
+	// const searchedTask = state.tasks.filter((item) => item.task.toLowerCase().includes(search.toLowerCase()));
+	const searchedTask = state.tasks
+		.concat(savedTasks)
+		.filter((item) => item.task.toLowerCase().includes(search.toLowerCase()));
 
-	const searchedTask = state.tasks.filter((item) => item.task.toLowerCase().includes(search.toLowerCase()));
+	useEffect(() => {
+		localStorage.setItem('tasks', JSON.stringify(state.tasks));
+		setTask('');
+	}, [state]);
 
 	const keyDownHandler = (e) => {
 		if (e.key === 'Enter') dispatch({ type: 'ADD_TASK', payload: task.trim() });
@@ -52,8 +60,8 @@ function Landing() {
 				{searchedTask
 					.slice()
 					.reverse()
-					.map((object) => (
-						<Task key={state.tasks.indexOf(object)} data={object} taskState={task} />
+					.map((object, index) => (
+						<Task key={index} data={object} taskState={task} />
 					))}
 			</div>
 		</div>
